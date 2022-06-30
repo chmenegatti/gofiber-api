@@ -29,4 +29,7 @@ func ConnectDb() {
 	log.Println("Running migrations")
 
 	//TODO: add migrations
+
+	Database = DbInstance{Db: db}
+
 }
