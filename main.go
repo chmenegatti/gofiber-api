@@ -3,17 +3,16 @@ package main
 import (
 	"log"
 
+	"github.com/chmenegatti/gofiber-api/database"
+	"github.com/chmenegatti/gofiber-api/routes"
 	"github.com/gofiber/fiber/v2"
 )
 
-func welcome(c *fiber.Ctx) error {
-	return c.SendString("Hello World")
-}
-
 func main() {
+	database.ConnectDb()
 	app := fiber.New()
 
-	app.Get("/", welcome)
+	routes.SetupRoutes(app)
 
 	log.Fatal(app.Listen(":3000"))
 }
