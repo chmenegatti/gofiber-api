@@ -20,4 +20,9 @@ func SetupRoutes(app *fiber.App) {
 	products.Patch("/:id", controller.UpdateProduct)
 	products.Delete("/:id", controller.DeleteProduct)
 
+	order := app.Group("/order")
+	order.Post("/", controller.CreateOrder)
+	order.Get("/", controller.GetOrders)
+	order.Get("/:id", controller.GetOrder)
+
 }
